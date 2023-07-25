@@ -17,7 +17,7 @@ const Cursor = () => {
 
 	const isTouchDevice = useMemo(() => {
 		if (typeof window !== 'undefined') {
-			return window.matchMedia('(pointer: coarse)')
+			return window.matchMedia('(pointer: coarse)').matches
 		}
 		return null
 	}, [])
