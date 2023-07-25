@@ -1,0 +1,120 @@
+.navbar {
+	position: fixed;
+	z-index: 100;
+	top: calc(0.5vw + 28px);
+	width: 100%;
+
+	--btn-width: 24px;
+
+	.container {
+		color: #FFFFFF;
+		border-radius: 20px;
+		background-color: #191A23;
+
+		.top {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 18px 24px;
+
+			.logo {
+				height: 22px;
+				fill: #FFFFFF;
+			}
+
+			ul {
+				display: flex;
+				align-items: center;
+
+				li {
+					margin-right: 24px;
+
+					&:last-child {
+						margin-right: 0;
+					}
+
+					button {
+						display: flex;
+						overflow: hidden;
+						align-items: center;
+
+						@media (prefers-reduced-motion: reduce) {
+							position: relative;
+							overflow: visible;
+							&:before {
+								position: absolute;
+								z-index: 1;
+								top: -2px;
+								left: -2px;
+								width: calc(100% + 4px);
+								height: calc(100% + 4px);
+								content: '';
+								border-radius: 6px;
+							}
+
+							&:hover, &:focus {
+								&:before {
+									background-color: #B9FF66;
+								}
+
+								.icon {
+									position: relative;
+									z-index: 10;
+									fill: #191A23;
+
+									&.menu span {
+										background-color: #191A23;
+									}
+								}
+							}
+						}
+
+						.label {
+							line-height: initial;
+							overflow: hidden;
+							white-space: nowrap;
+
+							@media (max-width: 425px) or (pointer: coarse) {
+								display: none;
+							}
+						}
+
+						.space {
+							width: 4px;
+
+							@media (max-width: 425px) or (pointer: coarse) {
+								display: none;
+							}
+						}
+
+						.icon {
+							flex-shrink: 0;
+							width: 24px;
+							height: 24px;
+							fill: #FFFFFF;
+
+							&.menu {
+								display: flex;
+								align-items: flex-end;
+								flex-direction: column;
+								justify-content: space-between;
+								padding: 6px 2px;
+
+								span {
+									width: 100%;
+									height: 2px;
+									border-radius: 2px;
+									background-color: #FFFFFF;
+
+									&:last-child {
+										width: 70%;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
