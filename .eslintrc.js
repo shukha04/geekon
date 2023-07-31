@@ -271,7 +271,6 @@ module.exports = {
 		'import/extensions': [ 1, 'never' ],
 		'import/first': 2,
 		'import/newline-after-import': 2,
-		'import/no-namespace': 2,
 		'import/order': [
 			2,
 			{

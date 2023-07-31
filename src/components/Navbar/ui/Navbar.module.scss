@@ -1,0 +1,28 @@
+.navbar {
+	position: fixed;
+	z-index: 100;
+	top: calc(0.5vw + 28px);
+	left: 50%;
+	transform: translateX(-50%);
+	color: #FFFFFF;
+
+	.wrapper {
+		border-radius: 20px;
+		background-color: #191A23;
+
+		.top {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			height: 60px;
+			padding: 0 24px;
+
+			.logo {
+				width: 126.06px;
+				height: 38px;
+				margin-left: -8px;
+				padding: 8px;
+			}
+		}
+	}
+}

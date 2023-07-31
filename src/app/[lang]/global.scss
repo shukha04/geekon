@@ -1,0 +1,14 @@
+*, *::before, *::after {
+	cursor: initial;
+}
+
+body {
+	color: #191A23;
+	background-color: #FFFFFF;
+}
+
+@media (pointer: coarse) or (prefers-reduced-motion) {
+	*, *::before, *::after {
+		cursor: initial;
+	}
+}

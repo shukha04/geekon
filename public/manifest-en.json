@@ -1,0 +1,22 @@
+{
+	"background_color": "#FFFFFF",
+	"categories": [
+		"business",
+		"social"
+	],
+	"description": "Elevate your project with our all-in-one solutions: Stunning UI/UX and web design, engaging 3D and motion design, robust website, app, and bot development, powerful SMM and targeting. Unleash its full potential now!",
+	"dir": "ltr",
+	"lang": "en",
+	"display": "browser",
+	"icons": [
+		{
+			"src": "favicon.ico",
+			"sizes": "16x16 32x32 64x64",
+			"type": "image/ico"
+		}
+	],
+	"name": "GeekOn | Digital Products Agency",
+	"orientation": "portrait-primary",
+	"short_name": "GeekOn",
+	"theme_color": "#191A23"
+}

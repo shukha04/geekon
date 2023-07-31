@@ -1,4 +1,4 @@
-# GeekOn -Digital Products Agency
+# GeekOn - Digital Products Agency
 
 Welcome to the GitHub repository for GeekOn, a digital product agency specializing in building web and mobile apps,
 creating UI/UX designs, graphic designs, and offering marketing solutions.
@@ -24,7 +24,7 @@ To get a local copy of the website up and running, follow these steps:
 
 1. Clone the repository using the following command:
    ```
-   git clone https://github.com/GeekOnAgency/website.git
+   git clone https://github.com/shukha04/geekon.git
    ```
 
 2. Navigate to the project folder:
@@ -42,13 +42,19 @@ To get a local copy of the website up and running, follow these steps:
    pnpm run dev
    ```
 
-5. Open your browser and access the website at `http://localhost:3000`.
+5. Open your browser and access the website at http://localhost:3000.
 
 ## Folder Structure
 
-- `/app`: Contains Next.js pages and routes according to Next.js documentation.
-- `/public`: Static assets such as images and fonts.
-- `/styles`: SCSS files for styling components and pages.
+- `/public`: Static assets.
+- `/src`: Source files.
+	- `/app`: Next.js 13 routes folder. (
+	  See [Next.js 13+ documentation](https://nextjs.org/docs/app/building-your-application/routing#the-app-router))
+		- `/[lang]`: Routes folder with localization. (
+		  See [`next-intl` documentation](https://next-intl-docs.vercel.app/docs/getting-started))
+	- `/assets`: Assets and localization files folder.
+	- `components`: Custom components' folder.
+		- `/providers`: Custom and libraries context providers folder.
 
 ## Contributing
 
