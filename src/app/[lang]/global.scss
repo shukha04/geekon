@@ -1,14 +1,33 @@
+@import 'reset';
+
 *, *::before, *::after {
-	cursor: initial;
+	cursor: none !important;
+}
+
+::selection {
+	color: #191A23;
+	background-color: #B9FF66;
 }
 
 body {
+	font-size: clamp(16px, 3vw, 18px);
+	height: 200vh;
+	user-select: none;
 	color: #191A23;
 	background-color: #FFFFFF;
 }
 
-@media (pointer: coarse) or (prefers-reduced-motion) {
+@media (pointer: coarse) or (prefers-reduced-motion: reduce) {
 	*, *::before, *::after {
-		cursor: initial;
+		cursor: initial !important;
 	}
+
+	button, button * {
+		cursor: pointer !important;
+	}
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
 }

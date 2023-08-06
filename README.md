@@ -53,8 +53,11 @@ To get a local copy of the website up and running, follow these steps:
 		- `/[lang]`: Routes folder with localization. (
 		  See [`next-intl` documentation](https://next-intl-docs.vercel.app/docs/getting-started))
 	- `/assets`: Assets and localization files folder.
-	- `components`: Custom components' folder.
-		- `/providers`: Custom and libraries context providers folder.
+	- `/components`: Custom components' folder.
+	- `/hooks`: Custom React hooks folder.
+	- `/providers`: Custom and libraries context providers folder.
+	- `/ui`: UI components folder.
+	- `/utils`: Some utilities used in project.
 
 ## Contributing
 

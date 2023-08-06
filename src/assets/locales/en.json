@@ -1,5 +1,5 @@
 {
-	"/": {
+	"metadata": {
 		"title": "GeekOn | Digital Products Agency",
 		"description": "Elevate your project with our all-in-one solutions: Stunning UI/UX and web design, engaging 3D and motion design, robust website, app, and bot development, powerful SMM and targeting. Unleash its full potential now!",
 		"og-description": "Elevate your project with our all-in-one solutions:\n• Stunning UI/UX and web design\n• Engaging 3D and motion design\n• Robust website, app, and bot development\n• Powerful SMM and targeting\n\nUnleash its full potential now!",
@@ -7,6 +7,15 @@
 		"authors": {
 			"Daler": "Daler Firuzov",
 			"Shukhrat": "Shukhrat Rustamov"
+		}
+	},
+	"navbar": {
+		"links": {
+			"main": "Main",
+			"services": "Services",
+			"cases": "Cases",
+			"team": "Team",
+			"reviews": "Reviews"
 		}
 	}
 }

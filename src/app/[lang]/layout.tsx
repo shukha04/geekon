@@ -1,35 +1,40 @@
 import { FC, ReactNode } from 'react'
-import './reset.scss'
 import './global.scss'
 import { Metadata } from 'next'
 import { createTranslator } from 'next-intl'
+import { SFProDisplay } from '@/assets/fonts'
 import { Navbar } from '@/components/Navbar'
 import { CursorProvider } from '@/providers/Cursor'
 import { FramerMotionProvider } from '@/providers/FramerMotion'
+import { IntlLanguages, NextIntlProvider } from '@/providers/NextIntl'
 
 type Props = {
 	children?: ReactNode
-	params: { lang: 'en' | 'ru' }
+	params: { lang: IntlLanguages }
 }
 
 const Layout: FC<Props> = ({ children, params: { lang } }) => {
 	return (
 		<html lang={lang}>
-			<body>
-				<FramerMotionProvider>
-					<CursorProvider>
-						<Navbar />
-						{children}
-					</CursorProvider>
-				</FramerMotionProvider>
+			<body className={SFProDisplay.className}>
+				<NextIntlProvider lang={lang}>
+					<FramerMotionProvider>
+						<CursorProvider>
+							<Navbar />
+							{children}
+						</CursorProvider>
+					</FramerMotionProvider>
+				</NextIntlProvider>
 			</body>
 		</html>
 	)
 }
 
-export const generateMetadata = async ({ params: { lang } }: { params: { lang: 'en' | 'ru' } }): Promise<Metadata> => {
-	const messages = (await import(`@/assets/dictionaries/${lang}/metadata.json`)).default
-	const t = createTranslator({ locale: lang, messages, namespace: '/' })
+export const generateMetadata = async ({ params: { lang } }: {
+	params: { lang: IntlLanguages }
+}): Promise<Metadata> => {
+	const messages = (await import(`@/assets/locales/${lang}.json`)).default
+	const t = createTranslator({ locale: lang, messages, namespace: 'metadata' })
 
 	return {
 		title: {

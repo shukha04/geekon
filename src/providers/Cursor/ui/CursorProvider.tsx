@@ -1,8 +1,9 @@
 'use client'
 
-import { FC, ReactNode, useEffect, useMemo, useReducer, useState } from 'react'
-import { Context, initialState } from '../config/context'
-import { reducer } from '../config/reducer'
+import { FC, ReactNode, useCallback, useContext, useMemo, useState } from 'react'
+import { useAnimate } from 'framer-motion'
+import { Context } from '../config/context'
+import { ContextState } from '../config/types'
 import { Cursor } from './Cursor'
 
 type Props = {
@@ -10,25 +11,44 @@ type Props = {
 }
 
 export const CursorProvider: FC<Props> = ({ children }) => {
-	const [ state, dispatch ] = useReducer(reducer, initialState)
-	const [ validScreen, setValidScreen ] = useState<boolean>(false)
+	const [ scope, animate ] = useAnimate<HTMLDivElement>()
+	const [ follow, setFollow ] = useState<boolean>(true)
 
-	useEffect(() => {
-		setValidScreen(!window.matchMedia('(pointer: coarse) or (prefers-reduced-motion: reduce)').matches)
+	const followMouse = useCallback(() => {
+		setFollow(true)
+		if (scope.current) {
+			animate(
+				scope.current,
+				{ width: 18, height: 18, borderRadius: '9px', mixBlendMode: 'normal' },
+				{
+					type: 'spring',
+					bounce: 0.3,
+					duration: 0.4,
+				},
+			)
+		}
+	}, [ scope, animate ])
+
+	const unfollowMouse = useCallback(() => {
+		setFollow(false)
 	}, [])
 
-	const contextValue = useMemo(() => {
-		return { state, dispatch }
-	}, [ state, dispatch ])
+	const initialState: ContextState = useMemo(() => {
+		return { cursorRef: scope, animateCursor: animate, followMouse, unfollowMouse }
+	}, [ scope, animate, followMouse, unfollowMouse ])
 
-	return validScreen
-		? (
-			<Context.Provider value={contextValue}>
-				{children}
-				<Cursor />
-			</Context.Provider>
-		)
-		: (
-			children
-		)
+	return (
+		<Context.Provider value={initialState}>
+			{children}
+			<Cursor
+				animate={animate}
+				following={follow}
+				scope={scope}
+			/>
+		</Context.Provider>
+	)
+}
+
+export const useCursor = () => {
+	return useContext(Context)
 }
