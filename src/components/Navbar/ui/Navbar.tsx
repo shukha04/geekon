@@ -97,17 +97,17 @@ export const Navbar: FC = () => {
 											})}
 										</NavigationMenu.List>
 										<NavigationMenu.List className={classes.sm}>
-											<NavigationMenu.Item>
+											<NavigationMenu.Item className={classes.item}>
 												<NavigationMenu.Link className={classes.link}>
 													<InstagramIcon />
 												</NavigationMenu.Link>
 											</NavigationMenu.Item>
-											<NavigationMenu.Item>
+											<NavigationMenu.Item className={classes.item}>
 												<NavigationMenu.Link className={classes.link}>
 													<TelegramIcon />
 												</NavigationMenu.Link>
 											</NavigationMenu.Item>
-											<NavigationMenu.Item>
+											<NavigationMenu.Item className={classes.item}>
 												<NavigationMenu.Link className={classes.link}>
 													<WhatsappIcon />
 												</NavigationMenu.Link>

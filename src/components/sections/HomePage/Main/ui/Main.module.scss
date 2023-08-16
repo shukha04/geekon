@@ -1,0 +1,25 @@
+.main {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 100svh;
+	min-height: 700px;
+
+	.text {
+		max-width: 690px;
+
+		.title {
+			font-family: var(--unbounded);
+			font-size: 2em;
+			font-weight: 700;
+		}
+
+		p {
+			margin: 32px 0;
+		}
+	}
+
+	.illustration {
+		max-width: 555px;
+	}
+}

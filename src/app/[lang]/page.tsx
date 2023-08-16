@@ -1,13 +1,10 @@
 'use client'
 
 import { FC } from 'react'
+import { Main } from '@/components/sections/HomePage/Main'
 
 const Index: FC = () => {
-	return (
-		<div>
-			<h1>Hello</h1>
-		</div>
-	)
+	return <Main />
 }
 
 export default Index

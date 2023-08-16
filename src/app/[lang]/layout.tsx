@@ -1,10 +1,11 @@
 import { FC, ReactNode } from 'react'
 import './global.scss'
+import clsx from 'clsx'
 import { Metadata } from 'next'
 import { createTranslator } from 'next-intl'
-import { SFProDisplay } from '@/assets/fonts'
+import { SFProDisplay, Unbounded } from '@/assets/fonts'
+import { Container } from '@/components/Container'
 import { Navbar } from '@/components/Navbar'
-import { CursorProvider } from '@/providers/Cursor'
 import { FramerMotionProvider } from '@/providers/FramerMotion'
 import { IntlLanguages, NextIntlProvider } from '@/providers/NextIntl'
 
@@ -16,13 +17,13 @@ type Props = {
 const Layout: FC<Props> = ({ children, params: { lang } }) => {
 	return (
 		<html lang={lang}>
-			<body className={SFProDisplay.className}>
+			<body className={clsx(SFProDisplay.variable, Unbounded.variable)}>
 				<NextIntlProvider lang={lang}>
 					<FramerMotionProvider>
-						<CursorProvider>
-							<Navbar />
+						<Navbar />
+						<Container>
 							{children}
-						</CursorProvider>
+						</Container>
 					</FramerMotionProvider>
 				</NextIntlProvider>
 			</body>
