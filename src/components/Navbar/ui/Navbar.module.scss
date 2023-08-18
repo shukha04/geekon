@@ -7,6 +7,7 @@
 	color: #FFFFFF;
 
 	.wrapper {
+		overflow: hidden;
 		border-radius: 20px;
 		background-color: #191A23;
 
@@ -113,6 +114,27 @@
 						height: 32px;
 					}
 				}
+			}
+		}
+
+		.viewport {
+			position: relative;
+			
+			@keyframes viewport-height {
+				from {
+					height: 0;
+				}
+				to {
+					height: var(--radix-navigation-menu-viewport-height);
+				}
+			}
+
+			&[data-state='open'] {
+				animation: viewport-height 0.3s cubic-bezier(.47, 1.64, .41, .8) forwards;
+			}
+
+			&[data-state='closed'] {
+				animation: viewport-height 0.3s cubic-bezier(.47, 1.5, .41, .8) backwards;
 			}
 		}
 	}

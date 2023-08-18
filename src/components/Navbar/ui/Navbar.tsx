@@ -1,6 +1,6 @@
 'use client'
 
-import { FC, useCallback, useEffect, useState } from 'react'
+import { FC, useCallback } from 'react'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
@@ -13,34 +13,8 @@ import Logo from '@/assets/vectors/logo.svg'
 import { Container } from '@/components/Container'
 import classes from './Navbar.module.scss'
 
-const navbarVariants = {
-	hidden: { y: -160 },
-	visible: { y: 0 },
-}
-
 export const Navbar: FC = () => {
-	const [ lastScroll, setLastScroll ] = useState<number>(0)
-	const [ visible, setVisible ] = useState<boolean>(true)
 	const t = useTranslations('navbar.links')
-
-	const handleScroll = useCallback(() => {
-		if (window.scrollY > lastScroll + 100) {
-			setVisible(false)
-			setLastScroll(window.scrollY)
-		}
-		else if (window.scrollY < lastScroll - 100) {
-			setVisible(true)
-			setLastScroll(window.scrollY)
-		}
-	}, [ lastScroll ])
-
-	useEffect(() => {
-		window.addEventListener('scroll', handleScroll)
-
-		return () => {
-			window.removeEventListener('scroll', handleScroll)
-		}
-	}, [ handleScroll ])
 
 	const preventEvent = useCallback((event: any) => {
 		event.preventDefault()
@@ -49,10 +23,9 @@ export const Navbar: FC = () => {
 	return (
 		<NavigationMenu.Root asChild>
 			<motion.nav
-				animate={visible ? 'visible' : 'hidden'}
+				animate={{ y: 0 }}
 				className={classes.navbar}
-				initial='hidden'
-				variants={navbarVariants}
+				initial={{ y: -150 }}
 				transition={{
 					type: 'spring',
 					bounce: 0.5,
@@ -66,17 +39,17 @@ export const Navbar: FC = () => {
 							<NavigationMenu.List className={classes.links}>
 								<NavigationMenu.Item>
 									<NavigationMenu.Link className={classes.link}>
-										<MailIcon />
+										<MailIcon aria-hidden />
 									</NavigationMenu.Link>
 								</NavigationMenu.Item>
-								<NavigationMenu.Item>
+								<NavigationMenu.Item value='menu'>
 									<NavigationMenu.Trigger
 										className={clsx(classes.link, classes.menu)}
 										onPointerLeave={preventEvent}
 										onPointerMove={preventEvent}
 									>
-										<span />
-										<span />
+										<span aria-hidden />
+										<span aria-hidden />
 									</NavigationMenu.Trigger>
 									<NavigationMenu.Content
 										className={classes.content}
@@ -117,9 +90,7 @@ export const Navbar: FC = () => {
 								</NavigationMenu.Item>
 							</NavigationMenu.List>
 						</div>
-						<motion.div>
-							<NavigationMenu.Viewport />
-						</motion.div>
+						<NavigationMenu.Viewport className={classes.viewport} />
 					</div>
 				</Container>
 			</motion.nav>

@@ -1,12 +1,27 @@
 .main {
 	display: flex;
 	align-items: center;
+	flex-wrap: wrap-reverse;
 	justify-content: space-between;
 	height: 100svh;
 	min-height: 700px;
 
+	@media (max-width: 743px) {
+		justify-content: center;
+		height: calc(100svh - 120px);
+		margin-top: 120px;
+		gap: 0;
+	}
+
 	.text {
-		max-width: 690px;
+		width: 50%;
+		min-width: 296px;
+		max-width: 700px;
+
+		@media (max-width: 743px) {
+			max-width: 400px;
+			text-align: center;
+		}
 
 		.title {
 			font-family: var(--unbounded);
@@ -14,12 +29,24 @@
 			font-weight: 700;
 		}
 
-		p {
+		.paragraph {
 			margin: 32px 0;
+		}
+
+		.button {
+			@media (max-width: 743px) {
+				width: 100%;
+			}
 		}
 	}
 
 	.illustration {
-		max-width: 555px;
+		width: 40%;
+		min-width: 296px;
+
+		@media (max-width: 743px) {
+			width: 100%;
+			max-width: 400px;
+		}
 	}
 }

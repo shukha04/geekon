@@ -11,18 +11,16 @@ export const Main: FC = () => {
 		<div className={classes.main}>
 			<div className={classes.text}>
 				<h1 className={classes.title}>Custom Apps & Websites: Your Unique Solution!</h1>
-				<p>
+				<p className={classes.paragraph}>
 					Make your dreams come true with our expert design team! Unique software, web applications and IT solutions
 					guaranteed to help you reach your goals!
 				</p>
-				<Button>
+				<Button className={classes.button}>
 					Discuss project
 					<BombIcon />
 				</Button>
 			</div>
-			<div className={classes.illustration}>
-				<Illustration />
-			</div>
+			<Illustration className={classes.illustration} />
 		</div>
 	)
 }
