@@ -269,8 +269,8 @@ input {
 /**
  * Address inconsistent `text-transform` inheritance for `button` and `select`.
  * All other form control elements do not inherit `text-transform` values.
- * Correct `button` style inheritance in Chrome, Safari 5+, and IE 6+.
- * Correct `select` style inheritance in Firefox 4+ and Opera.
+ * Correct `button` styles inheritance in Chrome, Safari 5+, and IE 6+.
+ * Correct `select` styles inheritance in Firefox 4+ and Opera.
  */
 
 button,
@@ -471,7 +471,7 @@ select {
 }
 
 /**
- * Correct the inability to style clickable types in iOS and Safari.
+ * Correct the inability to styles clickable types in iOS and Safari.
  */
 button,
 [type='button'],
@@ -519,7 +519,7 @@ progress {
 }
 
 /**
- * Correct the cursor style of increment and decrement buttons in Chrome.
+ * Correct the cursor styles of increment and decrement buttons in Chrome.
  */
 [type='number']::-webkit-inner-spin-button,
 [type='number']::-webkit-outer-spin-button {
@@ -528,7 +528,7 @@ progress {
 
 /**
  * 1. Correct the odd appearance in Chrome and Safari.
- * 2. Correct the outline style in Safari.
+ * 2. Correct the outline styles in Safari.
  */
 [type='search'] {
 	outline-offset: -2px;
@@ -545,7 +545,7 @@ progress {
 }
 
 /**
- * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 1. Correct the inability to styles clickable types in iOS and Safari.
  * 2. Change font properties to `inherit` in Safari.
  */
 ::-webkit-file-upload-button {

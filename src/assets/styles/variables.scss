@@ -1,0 +1,22 @@
+$primary-color: #B9FF66;
+$white-color: #FFFFFF;
+$black-color: #191A23;
+$gray-color: #F3F3F3;
+$dark-color: #3A3B4B;
+
+$unbounded-font: unquote('var(--unbounded)');
+$sf-pro-font: unquote('var(--sf-pro)');
+
+html {
+	--black-to-white: #{$black-color};
+	--black-to-primary: #{$black-color};
+
+	--white-to-black: #{$white-color};
+
+	&[data-theme='dark'] {
+		--black-to-white: #{$white-color};
+		--black-to-primary: #{$primary-color};
+
+		--white-to-black: #{$black-color};
+	}
+}

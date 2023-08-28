@@ -1,20 +1,15 @@
 'use client'
 
+import './Navbar.scss'
 import { FC, useCallback, useEffect, useRef, useState } from 'react'
-import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import clsx from 'clsx'
-import { motion, useMotionValue, useScroll, useTransform } from 'framer-motion'
+import { Content, Item, Link, List, Trigger, Viewport } from '@radix-ui/react-navigation-menu'
+import { useMotionValue, useScroll, useTransform } from 'framer-motion'
 import { useTranslations } from 'next-intl'
-import InstagramIcon from '@/assets/icons/instagram-circle.svg'
-import MailIcon from '@/assets/icons/mail-outline.svg'
-import TelegramIcon from '@/assets/icons/telegram-circle.svg'
-import WhatsappIcon from '@/assets/icons/whatsapp-circle.svg'
 import Logo from '@/assets/vectors/logo.svg'
-import { Container } from '@/components/Container'
-import classes from './Navbar.module.scss'
+import { ThemeButton } from '@/components/Navbar/ui/ThemeButton'
+import { NavbarRoot } from './Root'
 
-const scrollThreshold = [ 0, 200 ]
-
+const scrollThreshold = [ 0, 150 ]
 export const Navbar: FC = () => {
 	const [ opened, setOpened ] = useState<boolean>(false)
 	const { scrollY } = useScroll()
@@ -23,15 +18,7 @@ export const Navbar: FC = () => {
 	const lastScrollDirection = useRef<'down' | 'up'>()
 	const pixelsScrolled = useMotionValue(0)
 	const navYPosition = useTransform(pixelsScrolled, scrollThreshold, [ 0, -150 ])
-	const t = useTranslations('navbar.links')
-
-	const preventEvent = useCallback((event: any) => {
-		event.preventDefault()
-	}, [])
-
-	const handleValueChange = useCallback((value: string) => {
-		setOpened(!!value)
-	}, [])
+	const t = useTranslations('navbar')
 
 	const handleScrollYChange = useCallback(
 		(latest: number) => {
@@ -67,6 +54,14 @@ export const Navbar: FC = () => {
 		[ pixelsScrolled, scrollY ],
 	)
 
+	const handleValueChange = useCallback((value: string) => {
+		setOpened(!!value)
+	}, [])
+
+	const preventEvent = useCallback((event: any) => {
+		event.preventDefault()
+	}, [])
+
 	useEffect(() => {
 		if (!opened) {
 			scrollY.on('change', handleScrollYChange)
@@ -78,83 +73,58 @@ export const Navbar: FC = () => {
 	}, [ handleScrollYChange, opened, scrollY ])
 
 	return (
-		<NavigationMenu.Root
-			asChild
+		<NavbarRoot
+			animate={{ y: 0 }}
+			className='navbar container'
+			initial={{ y: -150 }}
+			style={{ y: navYPosition }}
+			transition={{
+				type: 'spring',
+				bounce: 0.5,
+				duration: 0.5,
+			}}
 			onValueChange={handleValueChange}
 		>
-			<motion.nav
-				animate={{ y: 0 }}
-				className={classes.navbar}
-				initial={{ y: -150 }}
-				style={{ y: navYPosition }}
-				transition={{
-					type: 'spring',
-					bounce: 0.5,
-					duration: 0.5,
-				}}
-			>
-				<Container>
-					<div className={classes.wrapper}>
-						<div className={classes.top}>
-							<Logo className={classes.logo} />
-							<NavigationMenu.List className={classes.links}>
-								<NavigationMenu.Item>
-									<NavigationMenu.Link className={classes.link}>
-										<MailIcon aria-hidden />
-									</NavigationMenu.Link>
-								</NavigationMenu.Item>
-								<NavigationMenu.Item value='menu'>
-									<NavigationMenu.Trigger
-										className={clsx(classes.link, classes.menu)}
-										onPointerLeave={preventEvent}
-										onPointerMove={preventEvent}
-									>
-										<span aria-hidden />
-										<span aria-hidden />
-									</NavigationMenu.Trigger>
-									<NavigationMenu.Content
-										className={classes.content}
-										onPointerLeave={preventEvent}
-									>
-										<NavigationMenu.List className={classes.links}>
-											{[ 'main', 'services', 'cases', 'team', 'reviews' ].map((link) => {
-												return (
-													<NavigationMenu.Item key={link}>
-														<NavigationMenu.Link
-															className={classes.link}
-															href={`/#${link}`}
-														>
-															{t(link)}
-														</NavigationMenu.Link>
-													</NavigationMenu.Item>
-												)
-											})}
-										</NavigationMenu.List>
-										<NavigationMenu.List className={classes.sm}>
-											<NavigationMenu.Item className={classes.item}>
-												<NavigationMenu.Link className={classes.link}>
-													<InstagramIcon />
-												</NavigationMenu.Link>
-											</NavigationMenu.Item>
-											<NavigationMenu.Item className={classes.item}>
-												<NavigationMenu.Link className={classes.link}>
-													<TelegramIcon />
-												</NavigationMenu.Link>
-											</NavigationMenu.Item>
-											<NavigationMenu.Item className={classes.item}>
-												<NavigationMenu.Link className={classes.link}>
-													<WhatsappIcon />
-												</NavigationMenu.Link>
-											</NavigationMenu.Item>
-										</NavigationMenu.List>
-									</NavigationMenu.Content>
-								</NavigationMenu.Item>
-							</NavigationMenu.List>
-						</div>
-						<NavigationMenu.Viewport className={classes.viewport} />
-					</div>
-				</Container>
-			</motion.nav>
-		</NavigationMenu.Root>
+			<div className='navbar__wrapper'>
+				<div className='navbar__top'>
+					<Logo className='logo' />
+					<List className='navbar__list'>
+						<Item className='navbar__list-item'>
+							<ThemeButton className='theme-toggle' />
+						</Item>
+						<Item className='navbar__list-item'>
+							<Trigger
+								className='nav-toggle'
+								onPointerLeave={preventEvent}
+								onPointerMove={preventEvent}
+							>
+								<span aria-hidden />
+								<span aria-hidden />
+							</Trigger>
+							<Content
+								className='submenu'
+								onPointerLeave={preventEvent}
+							>
+								<List className='submenu__list'>
+									{[ 'main', 'services', 'cases', 'team', 'reviews' ].map((link) => {
+										return (
+											<Item key={link}>
+												<Link
+													className='submenu__link'
+													href={`/#${link}`}
+												>
+													{t(`links.${link}`)}
+												</Link>
+											</Item>
+										)
+									})}
+								</List>
+							</Content>
+						</Item>
+					</List>
+				</div>
+				<Viewport className='navbar__viewport' />
+			</div>
+		</NavbarRoot>
 	)
 }

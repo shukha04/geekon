@@ -15,5 +15,5 @@ export const SFProDisplay = localFont({
 		},
 	],
 	style: 'normal',
-	variable: '--sf-pro-display',
+	variable: '--sf-pro',
 })

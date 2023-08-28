@@ -1,13 +1,13 @@
 import { FC, ReactNode } from 'react'
-import './global.scss'
-import clsx from 'clsx'
+import '../../assets/styles/global.scss'
+import cx from 'clsx'
 import { Metadata } from 'next'
 import { createTranslator } from 'next-intl'
 import { SFProDisplay, Unbounded } from '@/assets/fonts'
-import { Container } from '@/components/Container'
 import { Navbar } from '@/components/Navbar'
 import { FramerMotionProvider } from '@/providers/FramerMotion'
 import { IntlLanguages, NextIntlProvider } from '@/providers/NextIntl'
+import { ThemesProvider } from '@/providers/Themes'
 
 type Props = {
 	children?: ReactNode
@@ -16,15 +16,19 @@ type Props = {
 
 const Layout: FC<Props> = ({ children, params: { lang } }) => {
 	return (
-		<html lang={lang}>
-			<body className={clsx(SFProDisplay.variable, Unbounded.variable)}>
+		<html
+			suppressHydrationWarning
+			className={cx(SFProDisplay.variable, Unbounded.variable)}
+			lang={lang}
+		>
+			<body>
 				<NextIntlProvider lang={lang}>
-					<FramerMotionProvider>
-						<Navbar />
-						<Container>
+					<ThemesProvider>
+						<FramerMotionProvider>
+							<Navbar />
 							{children}
-						</Container>
-					</FramerMotionProvider>
+						</FramerMotionProvider>
+					</ThemesProvider>
 				</NextIntlProvider>
 			</body>
 		</html>
@@ -66,6 +70,8 @@ export const generateMetadata = async ({ params: { lang } }: {
 			description: t('og-description'),
 			locale: lang,
 			type: 'website',
+
+			// TODO: change to https://geekon.org
 			url: 'https://geekon.vercel.app',
 			alternateLocale: lang === 'en' ? 'ru' : 'en',
 			siteName: 'GeekOn',
@@ -75,6 +81,8 @@ export const generateMetadata = async ({ params: { lang } }: {
 			index: true,
 		},
 		themeColor: [{ media: '(prefers-color-scheme: light)', color: '#191A23' }],
+
+		// TODO: change to https://geekon.org
 		manifest: new URL(`https://geekon.vercel.app/manifest-${lang}.json`),
 		twitter: {
 			card: 'summary',
@@ -86,6 +94,8 @@ export const generateMetadata = async ({ params: { lang } }: {
 			initialScale: 1,
 			maximumScale: 1,
 		},
+
+		// TODO: change to https://geekon.org
 		assets: [ 'https://geekon.vercel.app/' ],
 	}
 }
