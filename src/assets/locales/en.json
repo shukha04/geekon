@@ -17,5 +17,86 @@
 			"team": "Team",
 			"reviews": "Reviews"
 		}
+	},
+	"homePage": {
+		"mainSection": {
+			"title": "Custom Apps & Websites: Your Unique Solution!",
+			"text": "Make your dreams come true with our expert design team! Unique software, web applications and IT solutions guaranteed to help you reach your goals!",
+			"link": "Discuss project"
+		},
+		"servicesSection": {
+			"title": "Services",
+			"text": "We are a professional team of developers, designers, and marketers, ready to help your company thrive in the online world. We provide innovative solutions to ensure your success on the Internet. Our package of services includes:",
+			"link": "Contact us",
+			"services": {
+				"webDev": {
+					"primary": "Website",
+					"secondary": "Development"
+				},
+				"appDev": {
+					"primary": "App & bot",
+					"secondary": "Development"
+				},
+				"graphDes": {
+					"primary": "Graphic",
+					"secondary": "Design"
+				},
+				"uiux": {
+					"primary": "UI/UX",
+					"secondary": "Design"
+				},
+				"smm": {
+					"primary": "Social Media",
+					"secondary": "Marketing"
+				},
+				"3d": {
+					"primary": "3D & Motion",
+					"secondary": "Design"
+				}
+			}
+		},
+		"casesSection": {
+			"title": "Cases",
+			"text": "We invite you to get acquainted with our portfolio of successful projects reflecting our experience in the digital world. We are ready to present you concrete examples of our documented successes, demonstrating our ability to achieve impressive results.",
+			"button": "View all",
+			"tags": {
+				"web": "Website",
+				"tgBot": "Telegram Bot",
+				"3d": "3D Graphics",
+				"video": "Video Edits",
+				"smm": "SMM"
+			}
+		},
+		"processSection": {
+			"title": "Working Process",
+			"text": "A step-by-step guide to achieving your business goals",
+			"steps": {
+				"1": {
+					"title": "Consultation",
+					"description": "During the initial consultation, we will discuss your business goals and objectives, target audience and current marketing efforts.\nThis will allow us to understand your needs and tailor our services to suit your requirements."
+				},
+				"2": {
+					"title": "Analysis and creation of strategic approaches",
+					"description": "We will spend the first days of work on the audit of the project, studying the market of your field and analyzing competitors.\nBased on the collected data, we will be able to develop an effective plan, taking into account all the subtleties of your field of activity."
+				},
+				"3": {
+					"title": "Execution",
+					"description": "After developing a strategy and setting goals, we begin active work.\nWe will constantly be in touch with you so that you can control the progress of your order at every step."
+				},
+				"4": {
+					"title": "Monitoring & Optimization",
+					"description": "As the work is completed, our team will track the business metrics of the project.\nThis will allow us to identify all the shortcomings and determine which element in the system requires optimization."
+				},
+				"5": {
+					"title": "Results",
+					"description": "Even after the completion of the work, we will continue to monitor your project and give you advice on its development.\nRemember: you can always contact us for help or advice. Our team is always ready to support you!"
+				}
+			},
+			"banner": {
+				"title": "Let's get started on reaching our goals.",
+				"text": "Contact us today to find out more about how our services can help your business reach new heights and succeed online.",
+				"link": "Discuss project"
+			}
+		}
 	}
 }

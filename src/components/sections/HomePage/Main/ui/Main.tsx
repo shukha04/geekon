@@ -1,26 +1,30 @@
 'use client'
 
 import { FC } from 'react'
+import { useTranslations } from 'next-intl'
 import BombIcon from '@/assets/icons/bomb-pixel.svg'
 import Illustration from '@/assets/vectors/main-Illustration.svg'
 import { Button } from '@/ui/Button'
 import classes from './Main.module.scss'
 
 export const Main: FC = () => {
+	const t = useTranslations('homePage.mainSection')
+
 	return (
-		<div className={classes.main}>
-			<div className={classes.text}>
-				<h1 className={classes.title}>Custom Apps & Websites: Your Unique Solution!</h1>
-				<p className={classes.paragraph}>
-					Make your dreams come true with our expert design team! Unique software, web applications and IT solutions
-					guaranteed to help you reach your goals!
+		<section className={classes.main}>
+			<div className={classes.content}>
+				<h1 className={classes.title}>
+					{t('title')}
+				</h1>
+				<p className={classes.text}>
+					{t('text')}
 				</p>
 				<Button className={classes.button}>
-					Discuss project
+					{t('link')}
 					<BombIcon />
 				</Button>
 			</div>
 			<Illustration className={classes.illustration} />
-		</div>
+		</section>
 	)
 }

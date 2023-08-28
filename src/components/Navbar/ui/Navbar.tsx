@@ -1,9 +1,9 @@
 'use client'
 
-import { FC, useCallback } from 'react'
+import { FC, useCallback, useEffect, useRef, useState } from 'react'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import clsx from 'clsx'
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useScroll, useTransform } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import InstagramIcon from '@/assets/icons/instagram-circle.svg'
 import MailIcon from '@/assets/icons/mail-outline.svg'
@@ -13,19 +13,80 @@ import Logo from '@/assets/vectors/logo.svg'
 import { Container } from '@/components/Container'
 import classes from './Navbar.module.scss'
 
+const scrollThreshold = [ 0, 200 ]
+
 export const Navbar: FC = () => {
+	const [ opened, setOpened ] = useState<boolean>(false)
+	const { scrollY } = useScroll()
+	const scrollYDirectionChange = useRef<number>(scrollY.get())
+	const lastScrollPosition = useRef<number>(0)
+	const lastScrollDirection = useRef<'down' | 'up'>()
+	const pixelsScrolled = useMotionValue(0)
+	const navYPosition = useTransform(pixelsScrolled, scrollThreshold, [ 0, -150 ])
 	const t = useTranslations('navbar.links')
 
 	const preventEvent = useCallback((event: any) => {
 		event.preventDefault()
 	}, [])
 
+	const handleValueChange = useCallback((value: string) => {
+		setOpened(!!value)
+	}, [])
+
+	const handleScrollYChange = useCallback(
+		(latest: number) => {
+			if (latest < 0) {
+				return
+			}
+
+			const isScrollingDown = scrollY.getPrevious() - latest < 0
+			const scrollDirection = isScrollingDown ? 'down' : 'up'
+			const currentPixelsScrolled = pixelsScrolled.get()
+			let newPixelsScrolled = 0
+
+			if (lastScrollDirection.current !== scrollDirection) {
+				lastScrollPosition.current = currentPixelsScrolled
+				scrollYDirectionChange.current = latest
+			}
+
+			if (isScrollingDown) {
+				newPixelsScrolled = Math.min(
+					lastScrollPosition.current + (latest - scrollYDirectionChange.current),
+					scrollThreshold[1],
+				)
+			}
+			else {
+				newPixelsScrolled = Math.max(
+					lastScrollPosition.current - (scrollYDirectionChange.current - latest),
+					scrollThreshold[0],
+				)
+			}
+			pixelsScrolled.set(newPixelsScrolled)
+			lastScrollDirection.current = scrollDirection
+		},
+		[ pixelsScrolled, scrollY ],
+	)
+
+	useEffect(() => {
+		if (!opened) {
+			scrollY.on('change', handleScrollYChange)
+		}
+
+		return () => {
+			scrollY.clearListeners()
+		}
+	}, [ handleScrollYChange, opened, scrollY ])
+
 	return (
-		<NavigationMenu.Root asChild>
+		<NavigationMenu.Root
+			asChild
+			onValueChange={handleValueChange}
+		>
 			<motion.nav
 				animate={{ y: 0 }}
 				className={classes.navbar}
 				initial={{ y: -150 }}
+				style={{ y: navYPosition }}
 				transition={{
 					type: 'spring',
 					bounce: 0.5,

@@ -15,12 +15,12 @@
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
-			height: 60px;
-			padding: 0 32px;
+			height: 3.35em;
+			padding: 0 1.75em;
 
 			.logo {
 				display: block;
-				height: 24px;
+				height: 1.333em;
 			}
 
 			.links {
@@ -28,41 +28,52 @@
 
 				.link {
 					display: block;
-					width: 32px;
-					height: 32px;
-					margin-right: 16px;
+					width: 1.8em;
+					height: 1.8em;
+					margin-right: 0.5em;
 					padding: 4px;
 
 					&.menu {
+						position: relative;
 						display: flex;
 						align-items: flex-end;
 						flex-direction: column;
 						justify-content: space-around;
 						margin-right: 0;
-						padding: 7px;
 						color: #FFFFFF;
 
 						span {
-							display: block;
+							position: absolute;
+							top: 32.5%;
+							right: 7px;
 							width: 100%;
+							max-width: calc(1.8em - 14px);
 							height: 2px;
 							transition: all 0.15s ease-in-out;
 							border-radius: 2px;
 							background-color: currentColor;
 
 							&:last-child {
-								width: 75%;
+								top: 67.5%;
+								max-width: calc((1.8em - 14px) * 0.75);
 							}
 						}
 
 						&[data-state='open'] {
 							span {
-								width: 100%;
-								transform: rotate(45deg) translate(3.5px, 3.5px);
+								top: calc(50% - 1px);
+								max-width: calc(1.8em - 14px);
+								transform: rotate(45deg);
 
 								&:last-child {
-									transform: rotate(-45deg) translate(3px, -2.5px);
+									transform: rotate(-45deg);
 								}
+							}
+						}
+
+						@keyframes menu-trigger {
+							0% {
+
 							}
 						}
 					}
@@ -119,7 +130,7 @@
 
 		.viewport {
 			position: relative;
-			
+
 			@keyframes viewport-height {
 				from {
 					height: 0;

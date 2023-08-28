@@ -1,4 +1,5 @@
-.services {
+.cases {
+	padding: 5em 0;
 
 	@media (max-width: 1024px) {
 		text-align: center;
@@ -20,29 +21,7 @@
 	}
 
 	.text {
-		width: 100%;
 		min-width: 272px;
-		max-width: 650px;
-	}
-
-	.list {
-		display: flex;
-		flex-wrap: wrap;
-		margin-top: 5em;
-		gap: 1.5em;
-
-		@media (max-width: 666px) {
-			align-items: center;
-			flex-direction: column;
-		}
-
-		.item {
-			width: calc(50% - 0.75em);
-			min-width: 272px;
-
-			@media (max-width: 666px) {
-				width: 70%;
-			}
-		}
+		max-width: 700px;
 	}
 }
