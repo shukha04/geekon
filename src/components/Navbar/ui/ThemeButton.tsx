@@ -27,8 +27,8 @@ export const ThemeButton: FC<ButtonHTMLAttributes<any>> = (props) => {
 			className='theme-checkbox'
 			onCheckedChange={handleCheckedChange}
 		>
+			<SunIcon />
 			<Indicator>
-				<SunIcon />
 				<MoonIcon />
 			</Indicator>
 		</Root>
