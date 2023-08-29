@@ -74,7 +74,7 @@ export const Navbar: FC = () => {
 
 	return (
 		<NavbarRoot
-			animate={{ y: 0 }}
+			animate={{ y: 0, height: opened ? 'auto' : '3.333333333em' }}
 			className='navbar container'
 			initial={{ y: -150 }}
 			style={{ y: navYPosition }}
@@ -108,7 +108,7 @@ export const Navbar: FC = () => {
 								<List className='submenu__list'>
 									{[ 'main', 'services', 'cases', 'team', 'reviews' ].map((link) => {
 										return (
-											<Item key={link}>
+											<Item key={link} className='submenu__item'>
 												<Link
 													className='submenu__link'
 													href={`/#${link}`}

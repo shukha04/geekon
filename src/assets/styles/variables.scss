@@ -13,10 +13,14 @@ html {
 
 	--white-to-black: #{$white-color};
 
+	--primary-to-black: #{$primary-color};
+
 	&[data-theme='dark'] {
 		--black-to-white: #{$white-color};
 		--black-to-primary: #{$primary-color};
 
 		--white-to-black: #{$black-color};
+
+		--primary-to-black: #{$black-color};
 	}
 }
