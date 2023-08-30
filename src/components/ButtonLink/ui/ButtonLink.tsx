@@ -14,14 +14,28 @@ type Props = {
 
 const MotionLink = motion(Link)
 
-export const ButtonLink = forwardRef<HTMLAnchorElement, Props>(({ children, icon, color = 'light', className, ...props }, forwardedRef) => {
+export const ButtonLink = forwardRef<HTMLAnchorElement, Props>(({
+	children,
+	icon,
+	color = 'light',
+	className,
+	...props
+}, forwardedRef) => {
 	return (
-		<Link {...props} className={cx('button-link', color, className)} ref={forwardedRef} role='link'>
+		<MotionLink
+			className={cx('button-link', color, className)}
+			href={props.href}
+			ref={forwardedRef}
+			role='link'
+			whileHover={{ scale: 1.05 }}
+			whileTap={{ scale: 1 }}
+
+		>
 			<span className='button-link__label'>
 				{children}
 			</span>
 			{icon? icon === 'bomb' ? <BombIcon className='button-link__icon icon bomb' /> : <WandIcon className='button-link__icon icon wand' />: null}
-		</Link>
+		</MotionLink>
 	)
 })
 

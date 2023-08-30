@@ -124,10 +124,14 @@ export const Navbar: FC = () => {
 													className='submenu__link'
 												>
 													<NavLink
-														href={`/#${link}`}
-														transition={{ type: 'spring', bounce: 0.4, duration: 0.4 }}
+														href={`#${link}`}
 														whileHover={{ scale: 1.05 }}
 														whileTap={{ scale: 1 }}
+														transition={{
+															type: 'spring',
+															bounce: 0.4,
+															duration: 0.4,
+														}}
 													>
 														{t(`links.${link}`)}
 													</NavLink>
