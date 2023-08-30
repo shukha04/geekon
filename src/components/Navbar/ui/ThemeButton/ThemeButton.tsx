@@ -1,11 +1,18 @@
-import { ButtonHTMLAttributes, FC, useCallback, useEffect, useState } from 'react'
+import { ButtonHTMLAttributes, forwardRef, useCallback, useEffect, useState } from 'react'
 import { CheckedState, Indicator, Root } from '@radix-ui/react-checkbox'
+import cx from 'clsx'
 import { useTheme } from 'next-themes'
 import MoonIcon from '@/assets/icons/moon-fill.svg'
 import SunIcon from '@/assets/icons/sun-fill.svg'
 
-export const ThemeButton: FC<ButtonHTMLAttributes<any>> = (props) => {
-	const { setTheme, resolvedTheme } = useTheme()
+export const ThemeButton = forwardRef<HTMLButtonElement, ButtonHTMLAttributes<any>>(({
+	className,
+	...props
+}, forwardRef) => {
+	const {
+		setTheme,
+		resolvedTheme,
+	} = useTheme()
 	const [ checked, setChecked ] = useState<boolean | 'indeterminate'>('indeterminate')
 
 	const handleCheckedChange = useCallback(
@@ -24,7 +31,8 @@ export const ThemeButton: FC<ButtonHTMLAttributes<any>> = (props) => {
 		<Root
 			{...props}
 			checked={checked}
-			className='theme-checkbox'
+			className={cx('theme-checkbox', className)}
+			ref={forwardRef}
 			onCheckedChange={handleCheckedChange}
 		>
 			<SunIcon />
@@ -33,4 +41,6 @@ export const ThemeButton: FC<ButtonHTMLAttributes<any>> = (props) => {
 			</Indicator>
 		</Root>
 	)
-}
+})
+
+ThemeButton.displayName = Root.displayName

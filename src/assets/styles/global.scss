@@ -1,9 +1,11 @@
+@use 'variables';
+
 @import 'reset';
-@import 'variables';
 @import 'mixins';
 
 html {
-	font-family: $sf-pro-font;
+	font-family: var(--sf-pro);
+	line-height: 1.6em;
 	color: var(--black-to-white);
 	background-color: var(--white-to-black);
 
@@ -11,28 +13,29 @@ html {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: $unbounded-font;
+	font-family: var(--unbounded);
 	font-weight: 500;
+	line-height: 1.2em;
 }
 
 h1 {
-	font-size: 2.111111em;
+	font-size: 2.111111111em;
 }
 
 h2 {
-	font-size: 1.888888em;
+	font-size: 1.888888888em;
 }
 
 h3 {
-	font-size: 1.666666em;
+	font-size: 1.666666666em;
 }
 
 h4 {
-	font-size: 1.444444em;
+	font-size: 1.444444444em;
 }
 
 h5 {
-	font-size: 1.222222em;
+	font-size: 1.222222222em;
 }
 
 h6 {
@@ -52,8 +55,57 @@ button, a {
 	color: inherit;
 }
 
-@media (prefers-reduced-motion: reduce) {
+@media screen and (prefers-reduced-motion: reduce) {
 	*, *:before, *:after {
 		transition: all 0s !important;
+	}
+}
+
+body {
+	min-height: 300vh;
+}
+
+.section {
+	padding-top: 6em;
+	padding-bottom: 6em;
+
+	&__title {
+		display: inline-block;
+		padding: 0 0.444444444em;
+		color: variables.$black-color;
+		border-radius: 0.333333333em;
+		background-color: variables.$primary-color;
+	}
+
+	&__text {
+		max-width: 700px;
+		margin-top: 1.333333333em;
+	}
+}
+
+::selection {
+	color: variables.$black-color;
+	background-color: variables.$primary-color;
+}
+
+svg {
+	*[class$='__black-to-dark-stroke'] {
+		stroke: var(--black-to-dark);
+	}
+
+	*[class$='__black-to-dark'] {
+		fill: var(--black-to-dark);
+	}
+
+	*[class$='__white-to-black'] {
+		fill: var(--white-to-black);
+	}
+
+	*[class$='__black-to-full-black'] {
+		fill: var(--black-to-full-black);
+	}
+
+	*[class$='__white-to-dark'] {
+		fill: var(--white-to-dark);
 	}
 }

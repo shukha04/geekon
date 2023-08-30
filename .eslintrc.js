@@ -1,7 +1,10 @@
 module.exports = {
 	settings: {
 		react: { version: 'detect' },
-		'import/resolver': { typescript: true, node: true },
+		'import/resolver': {
+			typescript: true,
+			node: true,
+		},
 		'import/parsers': { '@typescript-eslint/parser': [ '.ts', '.tsx' ] },
 	},
 	env: {
@@ -69,7 +72,6 @@ module.exports = {
 		'no-regex-spaces': 2,
 		'no-return-assign': 2,
 		'no-return-await': 2,
-		'@typescript-eslint/no-shadow': 2,
 		'no-throw-literal': 2,
 		'no-underscore-dangle': 2,
 		'no-unneeded-ternary': 2,
@@ -131,8 +133,14 @@ module.exports = {
 				SwitchCase: 1,
 				VariableDeclarator: 'first',
 				MemberExpression: 1,
-				FunctionDeclaration: { parameters: 'first', body: 1 },
-				FunctionExpression: { parameters: 'first', body: 1 },
+				FunctionDeclaration: {
+					parameters: 'first',
+					body: 1,
+				},
+				FunctionExpression: {
+					parameters: 'first',
+					body: 1,
+				},
 				StaticBlock: { body: 1 },
 				CallExpression: { arguments: 'first' },
 				ArrayExpression: 'first',
@@ -158,7 +166,7 @@ module.exports = {
 		'max-len': [
 			2,
 			{
-				code: 120,
+				code: 140,
 				tabWidth: 2,
 				ignoreTrailingComments: true,
 				ignoreUrls: true,
@@ -168,7 +176,7 @@ module.exports = {
 			},
 		],
 		'max-statements-per-line': [ 2, { max: 1 }],
-		'multiline-ternary': [ 2, 'always-multiline' ],
+		'multiline-ternary': [ 2, 'never' ],
 		'newline-per-chained-call': 2,
 		'no-extra-parens': [ 2, 'functions' ],
 		'no-multi-spaces': [ 2, { ignoreEOLComments: true }],
@@ -187,7 +195,14 @@ module.exports = {
 		'rest-spread-spacing': [ 2, 'never' ],
 		semi: [ 2, 'never' ],
 		'space-before-blocks': 2,
-		'space-before-function-paren': [ 2, { anonymous: 'always', named: 'never', asyncArrow: 'always' }],
+		'space-before-function-paren': [
+			2,
+			{
+				anonymous: 'always',
+				named: 'never',
+				asyncArrow: 'always',
+			},
+		],
 		'space-in-parens': 2,
 		'space-unary-ops': 2,
 		'switch-colon-spacing': 2,
@@ -199,20 +214,36 @@ module.exports = {
 		'react/destructuring-assignment': [ 2, 'always' ],
 		'react/function-component-definition': [
 			2,
-			{ namedComponents: 'arrow-function', unnamedComponents: 'arrow-function' },
+			{
+				namedComponents: 'arrow-function',
+				unnamedComponents: 'arrow-function',
+			},
 		],
 		'react/hook-use-state': 2,
 		'react/jsx-closing-bracket-location': [ 2, 'line-aligned' ],
 		'react/jsx-closing-tag-location': 2,
 		'react/jsx-curly-brace-presence': [ 2, 'never' ],
 		'react/jsx-curly-newline': [ 2, 'consistent' ],
-		'react/jsx-curly-spacing': [ 2, { when: 'never', children: true }],
+		'react/jsx-curly-spacing': [
+			2,
+			{
+				when: 'never',
+				children: true,
+			},
+		],
 		'react/jsx-equals-spacing': 2,
 		'react/jsx-filename-extension': [ 2, { extensions: [ '.tsx' ] }],
 		'react/jsx-first-prop-new-line': [ 2, 'multiline' ],
 		'react/jsx-fragments': [ 2, 'syntax' ],
 		'react/jsx-handler-names': 2,
-		'react/jsx-indent': [ 2, 'tab', { checkAttributes: true, indentLogicalExpressions: true }],
+		'react/jsx-indent': [
+			2,
+			'tab',
+			{
+				checkAttributes: true,
+				indentLogicalExpressions: false,
+			},
+		],
 		'react/jsx-indent-props': [ 2, 'tab' ],
 		'react/jsx-no-constructed-context-values': 2,
 		'react/jsx-no-leaked-render': 2,

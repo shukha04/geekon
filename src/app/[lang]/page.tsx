@@ -1,9 +1,15 @@
 'use client'
 
 import { FC } from 'react'
+import { MainSection, ServicesSection } from '@/sections/home-page'
 
 const Index: FC = () => {
-	return <div />
+	return (
+		<>
+			<MainSection />
+			<ServicesSection />
+		</>
+	)
 }
 
 export default Index

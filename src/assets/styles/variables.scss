@@ -3,24 +3,24 @@ $white-color: #FFFFFF;
 $black-color: #191A23;
 $gray-color: #F3F3F3;
 $dark-color: #3A3B4B;
-
-$unbounded-font: unquote('var(--unbounded)');
-$sf-pro-font: unquote('var(--sf-pro)');
+$full-black-color: #000000;
 
 html {
 	--black-to-white: #{$black-color};
 	--black-to-primary: #{$black-color};
-
 	--white-to-black: #{$white-color};
-
+	--white-to-dark: #{$white-color};
 	--primary-to-black: #{$primary-color};
+	--black-to-dark: #{$black-color};
+	--black-to-full-black: #{$black-color};
 
 	&[data-theme='dark'] {
 		--black-to-white: #{$white-color};
 		--black-to-primary: #{$primary-color};
-
 		--white-to-black: #{$black-color};
-
+		--white-to-dark: #{$dark-color};
 		--primary-to-black: #{$black-color};
+		--black-to-dark: #{$dark-color};
+		--black-to-full-black: #{$full-black-color};
 	}
 }

@@ -1,12 +1,14 @@
 'use client'
 
-import './Navbar.scss'
 import { FC, useCallback, useEffect, useRef, useState } from 'react'
-import { Content, Item, Link, List, Trigger, Viewport } from '@radix-ui/react-navigation-menu'
-import { useMotionValue, useScroll, useTransform } from 'framer-motion'
+import { Content, Item, Link, List, Viewport } from '@radix-ui/react-navigation-menu'
+import { motion, useMotionValue, useScroll, useTransform } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import Logo from '@/assets/vectors/logo.svg'
-import { ThemeButton } from '@/components/Navbar/ui/ThemeButton'
+import { NavLink } from '@/components/Navbar/ui/NavLink/NavLink'
+import { NavToggle } from '../NavToggle/NavToggle'
+import { ThemeButton } from '../ThemeButton/ThemeButton'
+import './Navbar.scss'
 import { NavbarRoot } from './Root'
 
 const scrollThreshold = [ 0, 150 ]
@@ -74,7 +76,7 @@ export const Navbar: FC = () => {
 
 	return (
 		<NavbarRoot
-			animate={{ y: 0, height: opened ? 'auto' : '3.333333333em' }}
+			animate={{ y: 0 }}
 			className='navbar container'
 			initial={{ y: -150 }}
 			style={{ y: navYPosition }}
@@ -85,22 +87,27 @@ export const Navbar: FC = () => {
 			}}
 			onValueChange={handleValueChange}
 		>
-			<div className='navbar__wrapper'>
+			<motion.div
+				animate={opened ? { height: 'auto' } : { height: '3.333333333em' }}
+				className='navbar__wrapper'
+				transition={{
+					type: 'spring',
+					bounce: 0.4,
+					duration: 0.4,
+				}}
+			>
 				<div className='navbar__top'>
 					<Logo className='logo' />
 					<List className='navbar__list'>
 						<Item className='navbar__list-item'>
-							<ThemeButton className='theme-toggle' />
+							<ThemeButton />
 						</Item>
 						<Item className='navbar__list-item'>
-							<Trigger
-								className='nav-toggle'
+							<NavToggle
+								opened={opened}
 								onPointerLeave={preventEvent}
 								onPointerMove={preventEvent}
-							>
-								<span aria-hidden />
-								<span aria-hidden />
-							</Trigger>
+							/>
 							<Content
 								className='submenu'
 								onPointerLeave={preventEvent}
@@ -108,12 +115,22 @@ export const Navbar: FC = () => {
 								<List className='submenu__list'>
 									{[ 'main', 'services', 'cases', 'team', 'reviews' ].map((link) => {
 										return (
-											<Item key={link} className='submenu__item'>
+											<Item
+												key={link}
+												className='submenu__item'
+											>
 												<Link
+													asChild
 													className='submenu__link'
-													href={`/#${link}`}
 												>
-													{t(`links.${link}`)}
+													<NavLink
+														href={`/#${link}`}
+														transition={{ type: 'spring', bounce: 0.4, duration: 0.4 }}
+														whileHover={{ scale: 1.05 }}
+														whileTap={{ scale: 1 }}
+													>
+														{t(`links.${link}`)}
+													</NavLink>
 												</Link>
 											</Item>
 										)
@@ -123,8 +140,11 @@ export const Navbar: FC = () => {
 						</Item>
 					</List>
 				</div>
-				<Viewport className='navbar__viewport' />
-			</div>
+				<Viewport
+					forceMount
+					className='navbar__viewport'
+				/>
+			</motion.div>
 		</NavbarRoot>
 	)
 }
