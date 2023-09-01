@@ -5,17 +5,18 @@ import { ButtonLink } from '@/components/ButtonLink/ui/ButtonLink'
 import { MainIllustration } from './Illustration'
 import './Main.scss'
 
-
 const initial = {
 	x: -200,
 	opacity: 0,
 	scale: 1,
 }
+const MotionIllustration = motion(MainIllustration)
+const MotionLink = motion(ButtonLink)
 
 export const MainSection: FC = () => {
 	const t = useTranslations('homePage.mainSection')
 	const [ contentScope, animateContent ] = useAnimate()
-	const stages = stagger(0.2, { startDelay: 0.4 })
+	const stages = stagger(0.2, { startDelay: 0.3 })
 
 	useEffect(() => {
 		animateContent('.child', {
@@ -34,11 +35,18 @@ export const MainSection: FC = () => {
 				<motion.p className='main-section__content-text child' initial={initial}>
 					{t('text')}
 				</motion.p>
-				<ButtonLink className='main-section__content-link child' href='/contact-us' icon='bomb' initial={initial}>
+				<MotionLink
+					className='main-section__content-link child'
+					href='/contact-us'
+					icon='bomb'
+					initial={initial}
+					whileHover={{ scale: 1.1 }}
+					whileTap={{ scale: 1 }}
+				>
 					{t('link')}
-				</ButtonLink>
+				</MotionLink>
 			</div>
-			<MainIllustration />
+			<MotionIllustration animate={{ y: 0, opacity: 1 }} className='main-section__illustration' initial={{ y: 200, opacity: 0 }} />
 		</section>
 	)
 }

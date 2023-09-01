@@ -29,7 +29,9 @@ export const Navbar: FC = () => {
 			}
 
 			const isScrollingDown = scrollY.getPrevious() - latest < 0
-			const scrollDirection = isScrollingDown ? 'down' : 'up'
+			const scrollDirection = isScrollingDown
+				? 'down'
+				: 'up'
 			const currentPixelsScrolled = pixelsScrolled.get()
 			let newPixelsScrolled = 0
 
@@ -88,8 +90,12 @@ export const Navbar: FC = () => {
 			onValueChange={handleValueChange}
 		>
 			<motion.div
-				animate={opened ? { height: 'auto' } : { height: '3.333333333em' }}
 				className='navbar__wrapper'
+				animate={
+					opened
+						? { height: 'auto' }
+						: { height: '3.333333333em' }
+				}
 				transition={{
 					type: 'spring',
 					bounce: 0.4,

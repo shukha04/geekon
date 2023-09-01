@@ -89,23 +89,31 @@ body {
 }
 
 svg {
-	*[class$='__black-to-dark-stroke'] {
+	*[class$='black-to-dark-stroke'] {
 		stroke: var(--black-to-dark);
 	}
 
-	*[class$='__black-to-dark'] {
+	*[class$='black-to-dark'] {
 		fill: var(--black-to-dark);
 	}
 
-	*[class$='__white-to-black'] {
+	*[class$='black-to-white-stroke'] {
+		stroke: var(--black-to-white);
+	}
+
+	*[class$='black-to-white'] {
+		fill: var(--black-to-white);
+	}
+
+	*[class$='white-to-black'] {
 		fill: var(--white-to-black);
 	}
 
-	*[class$='__black-to-full-black'] {
+	*[class$='black-to-full-black'] {
 		fill: var(--black-to-full-black);
 	}
 
-	*[class$='__white-to-dark'] {
+	*[class$='white-to-dark'] {
 		fill: var(--white-to-dark);
 	}
 }
