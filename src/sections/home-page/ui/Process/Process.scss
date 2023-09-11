@@ -1,0 +1,127 @@
+@use '@/assets/styles/variables';
+
+@import '@/assets/styles/mixins';
+
+.process-section {
+	&__accordion {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		gap: 1.333333333em;
+	}
+
+	.accordion {
+		&__item {
+			background-color: var(--primary-to-dark);
+
+			@include default-border;
+		}
+
+		&__title {
+			@media screen and (width <= 768px) {
+				font-size: 1.444444444em;
+			}
+			@media screen and (width < 375px) {
+				font-size: 1.222222222em;
+			}
+
+			&-wrapper {
+				display: flex;
+				align-items: center;
+				width: 100%;
+				padding: 1.333333333em 2em;
+				gap: 0.8em;
+
+				&[data-state='open'] {
+					padding-bottom: 0;
+
+					.accordion__title-indicator:last-child {
+						transform: rotate(90deg) scale(0);
+					}
+				}
+			}
+
+			&-number {
+				font-size: 2em;
+				font-weight: 500;
+			}
+
+			&-text {
+				font-weight: 700;
+				flex-grow: 1;
+				text-align: left;
+			}
+
+			&-icon {
+				position: relative;
+				display: block;
+				flex-shrink: 0;
+				width: 1.6em;
+				height: 1.6em;
+				border: 1px solid variables.$black-color;
+				border-radius: 50%;
+				background-color: var(--gray-to-black);
+			}
+
+			&-indicator {
+				position: absolute;
+				top: calc(50% - 0.1em);
+				left: calc(50% - 0.3em);
+				display: block;
+				width: 100%;
+				max-width: 0.6em;
+				height: 0.2em;
+				background-color: var(--black-to-dark);
+
+				&:last-child {
+					transition: transform 0.2s ease-in-out;
+					transform: rotate(90deg);
+				}
+			}
+		}
+
+		&__separator {
+			height: 1px;
+			margin: 1.666666666em 0;
+			background-color: variables.$black-color;
+		}
+
+		&__content {
+			padding: 0 3.333333333em 2.222222222em;
+		}
+	}
+
+	.offer {
+		display: flex;
+		justify-content: space-between;
+		margin-top: 8em;
+		padding: 1.666666666em 3.333333333em;
+		background-color: var(--gray-to-dark);
+
+		@include default-border;
+
+		&__content {
+			display: flex;
+			align-items: flex-start;
+			flex-direction: column;
+			justify-content: center;
+			max-width: 500px;
+			gap: 1.333333333em;
+		}
+
+		&__illustration {
+			max-width: 18em;
+		}
+
+		@media screen and (width <= 768px) {
+			&__content {
+				align-items: center;
+				max-width: 100%;
+			}
+
+			&__illustration {
+				display: none;
+			}
+		}
+	}
+}

@@ -2,25 +2,38 @@ $primary-color: #B9FF66;
 $white-color: #FFFFFF;
 $black-color: #191A23;
 $gray-color: #F3F3F3;
+$dark-gray-color: #D9D9D9;
 $dark-color: #3A3B4B;
 $full-black-color: #000000;
 
 html {
 	--black-to-white: #{$black-color};
 	--black-to-primary: #{$black-color};
-	--white-to-black: #{$white-color};
-	--white-to-dark: #{$white-color};
-	--primary-to-black: #{$primary-color};
 	--black-to-dark: #{$black-color};
 	--black-to-full-black: #{$black-color};
+	--white-to-black: #{$white-color};
+	--white-to-dark: #{$white-color};
+	--white-to-primary: #{$white-color};
+	--primary-to-black: #{$primary-color};
+	--primary-to-dark: #{$primary-color};
+	--gray-to-dark: #{$gray-color};
+	--gray-to-black: #{$gray-color};
+	--dark-gray-to-black: #{$dark-gray-color};
+	--full-black-to-black: #{$full-black-color};
 
 	&[data-theme='dark'] {
 		--black-to-white: #{$white-color};
 		--black-to-primary: #{$primary-color};
-		--white-to-black: #{$black-color};
-		--white-to-dark: #{$dark-color};
-		--primary-to-black: #{$black-color};
 		--black-to-dark: #{$dark-color};
 		--black-to-full-black: #{$full-black-color};
+		--white-to-black: #{$black-color};
+		--white-to-dark: #{$dark-color};
+		--white-to-primary: #{$primary-color};
+		--primary-to-black: #{$black-color};
+		--primary-to-dark: #{$dark-color};
+		--gray-to-dark: #{$dark-color};
+		--gray-to-black: #{$black-color};
+		--dark-gray-to-black: #{$black-color};
+		--full-black-to-black: #{$black-color};
 	}
 }

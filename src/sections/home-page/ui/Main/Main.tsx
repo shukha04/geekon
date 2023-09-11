@@ -10,7 +10,6 @@ const initial = {
 	opacity: 0,
 	scale: 1,
 }
-const MotionIllustration = motion(MainIllustration)
 const MotionLink = motion(ButtonLink)
 
 export const MainSection: FC = () => {
@@ -38,7 +37,7 @@ export const MainSection: FC = () => {
 				<MotionLink
 					className='main-section__content-link child'
 					href='/contact-us'
-					icon='bomb'
+					icon='wand'
 					initial={initial}
 					whileHover={{ scale: 1.1 }}
 					whileTap={{ scale: 1 }}
@@ -46,7 +45,7 @@ export const MainSection: FC = () => {
 					{t('link')}
 				</MotionLink>
 			</div>
-			<MotionIllustration animate={{ y: 0, opacity: 1 }} className='main-section__illustration' initial={{ y: 200, opacity: 0 }} />
+			<MainIllustration className='main-section__illustration' />
 		</section>
 	)
 }

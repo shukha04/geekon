@@ -1,0 +1,46 @@
+@use '@/assets/styles/variables';
+
+@import '@/assets/styles/mixins';
+
+.reviews-section {
+	.reviews__slider {
+		overflow: visible;
+		max-width: 540px;
+
+		&-item {
+			@include default-border;
+
+			.review-card {
+				background-color: var(--white-to-dark);
+
+				&__content {
+					padding: 3.5em 2em;
+				}
+
+				&__footer {
+					padding: 1.333333333em 2em;
+					border-top: 1px solid variables.$black-color;
+				}
+			}
+		}
+
+		.swiper-pagination {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-top: 40px;
+			gap: 0.444444444em;
+
+			&-bullet {
+				width: 2.222222222em;
+				height: 0.277777777em;
+				border-radius: 0.277777777em;
+				background-color: variables.$dark-gray-color;
+
+				&-active {
+					background-color: variables.$primary-color;
+				}
+			}
+		}
+	}
+}

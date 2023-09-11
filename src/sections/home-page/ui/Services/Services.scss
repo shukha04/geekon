@@ -1,0 +1,125 @@
+@use '@/assets/styles/variables';
+
+@import '@/assets/styles/mixins';
+
+.services-section {
+	overflow-x: hidden;
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1.333333333em;
+
+		&-item {
+			width: calc(50% - (1.333333333em / 2));
+		}
+
+		.card {
+			@include default-border;
+
+			&.primary {
+				background-color: var(--primary-to-dark);
+
+				.card__title span {
+					color: variables.$black-color;
+					background-color: variables.$white-color;
+				}
+
+				&:hover {
+					.card__label-icon {
+						background-color: var(--white-to-primary);
+					}
+				}
+			}
+
+			&.dark {
+				background-color: var(--black-to-dark);
+
+				.card__title span {
+					background-color: var(--primary-to-black);
+				}
+
+				.card__label {
+					color: variables.$white-color;
+
+					&-icon {
+						color: var(--white-to-black);
+					}
+				}
+
+				&:hover {
+					.card__label-icon {
+						background-color: var(--black-to-primary);
+					}
+				}
+			}
+
+			&.light {
+				background-color: var(--gray-to-dark);
+
+				.card__title span {
+					color: variables.$black-color;
+					background-color: variables.$primary-color;
+				}
+
+				&:hover {
+					.card__label-icon {
+						background-color: variables.$primary-color;
+					}
+				}
+			}
+
+			&__content-wrapper {
+				display: grid;
+				width: 100%;
+				height: calc(10em + (2.777777777em * 2));
+				padding: 2.777777777em;
+				grid-template-columns: repeat(2, auto);
+				grid-template-rows: 1fr auto;
+			}
+
+			&__title {
+				display: flex;
+				align-items: flex-start;
+				flex-direction: column;
+
+				&-secondary {
+					font-family: var(--sf-pro);
+				}
+
+				span {
+					padding: 0 0.233333333em;
+					border-radius: 0.233333333em;
+				}
+			}
+
+			&__illustration {
+				width: 100%;
+				height: 100%;
+				grid-column: 2/3;
+				grid-row: 1/3;
+			}
+
+			&__label {
+				font-weight: 500;
+				display: flex;
+				align-items: center;
+				gap: 1em;
+
+				&-icon {
+					width: 2em;
+					height: 2em;
+					transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+					color: variables.$black-color;
+					border-radius: 50%;
+				}
+			}
+
+			&:hover {
+				.card__label-icon {
+					transform: translate(0.5em, -0.5em);
+				}
+			}
+		}
+	}
+}

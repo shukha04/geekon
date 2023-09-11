@@ -12,10 +12,15 @@ html {
 	@include dynamic-font-size;
 }
 
+body {
+	overflow-x: hidden;
+}
+
 h1, h2, h3, h4, h5, h6 {
 	font-family: var(--unbounded);
 	font-weight: 500;
 	line-height: 1.2em;
+	letter-spacing: -2%;
 }
 
 h1 {
@@ -61,59 +66,38 @@ button, a {
 	}
 }
 
-body {
-	min-height: 300vh;
-}
-
 .section {
 	padding-top: 6em;
 	padding-bottom: 6em;
 
 	&__title {
-		display: inline-block;
-		padding: 0 0.444444444em;
 		color: variables.$black-color;
-		border-radius: 0.333333333em;
-		background-color: variables.$primary-color;
+
+		&-bg {
+			padding: 0 0.444444444em;
+			border-radius: 0.333333333em;
+			background-color: variables.$primary-color;
+		}
 	}
 
 	&__text {
 		max-width: 700px;
-		margin-top: 1.333333333em;
+		margin: 1.333333333em 0 4.444444444em;
+	}
+
+	@media screen and (width <= 768px) {
+		&__title, &__text {
+			text-align: center;
+		}
+
+		&__text {
+			width: 90%;
+			margin: 1.333333333em auto 4.444444444em;
+		}
 	}
 }
 
 ::selection {
 	color: variables.$black-color;
 	background-color: variables.$primary-color;
-}
-
-svg {
-	*[class$='black-to-dark-stroke'] {
-		stroke: var(--black-to-dark);
-	}
-
-	*[class$='black-to-dark'] {
-		fill: var(--black-to-dark);
-	}
-
-	*[class$='black-to-white-stroke'] {
-		stroke: var(--black-to-white);
-	}
-
-	*[class$='black-to-white'] {
-		fill: var(--black-to-white);
-	}
-
-	*[class$='white-to-black'] {
-		fill: var(--white-to-black);
-	}
-
-	*[class$='black-to-full-black'] {
-		fill: var(--black-to-full-black);
-	}
-
-	*[class$='white-to-dark'] {
-		fill: var(--white-to-dark);
-	}
 }

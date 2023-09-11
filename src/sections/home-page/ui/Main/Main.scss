@@ -16,7 +16,6 @@
 
 		&-title {
 			font-weight: 700;
-			letter-spacing: 1px;
 		}
 
 		&-text {
@@ -39,6 +38,10 @@
 
 		&__content {
 			text-align: center;
+
+			&-text {
+				align-self: center;
+			}
 
 			&-link {
 				align-self: center;

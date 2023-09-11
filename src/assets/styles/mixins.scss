@@ -1,6 +1,6 @@
 @use 'variables';
 
-@mixin dynamic-font-size($min-font-size: 14px, $max-font-size: 18px, $lower-range: 512px, $upper-range: 1024px) {
+@mixin dynamic-font-size($min-font-size: 12px, $max-font-size: 18px, $lower-range: 512px, $upper-range: 1024px) {
 	--min-width: #{$lower-range};
 	--max-width: #{$upper-range};
 
@@ -14,7 +14,7 @@
 	}
 }
 @mixin default-border {
-	border-radius: 50px;
+	border-radius: 2.777777777em;
 	border: 1px solid variables.$black-color;
 	box-shadow: 0 5px 0 variables.$black-color;
 }

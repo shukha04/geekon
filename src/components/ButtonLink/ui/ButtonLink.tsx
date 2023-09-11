@@ -11,7 +11,13 @@ type Props = {
 	color?: 'dark' | 'light'
 } & AnchorHTMLAttributes<any>
 
-export const ButtonLink = forwardRef<HTMLAnchorElement, Props>(({ children, icon, color = 'light', className, ...props }, forwardedRef) => {
+export const ButtonLink = forwardRef<HTMLAnchorElement, Props>(({
+	children,
+	icon,
+	color = 'light',
+	className,
+	...props
+}, forwardedRef) => {
 	return (
 		<Link
 			{...props}

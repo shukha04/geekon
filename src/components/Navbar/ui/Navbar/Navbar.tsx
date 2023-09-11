@@ -1,7 +1,7 @@
 'use client'
 
 import { FC, useCallback, useEffect, useRef, useState } from 'react'
-import { Content, Item, Link, List, Viewport } from '@radix-ui/react-navigation-menu'
+import { Content, Item, Link, List, Root, Viewport } from '@radix-ui/react-navigation-menu'
 import { motion, useMotionValue, useScroll, useTransform } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import Logo from '@/assets/vectors/logo.svg'
@@ -9,7 +9,8 @@ import { NavLink } from '@/components/Navbar/ui/NavLink/NavLink'
 import { NavToggle } from '../NavToggle/NavToggle'
 import { ThemeButton } from '../ThemeButton/ThemeButton'
 import './Navbar.scss'
-import { NavbarRoot } from './Root'
+
+export const NavbarRoot = motion(Root)
 
 const scrollThreshold = [ 0, 150 ]
 export const Navbar: FC = () => {

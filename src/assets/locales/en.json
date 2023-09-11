@@ -97,6 +97,61 @@
 				"text": "Contact us today to find out more about how our services can help your business reach new heights and succeed online.",
 				"link": "Discuss project"
 			}
+		},
+		"teamSection": {
+			"title": "Team",
+			"text": "Meet the qualified and experienced team behind our successful digital industry strategies",
+			"members": {
+				"daler-firuzov": {
+					"name": "Daler Firuzov",
+					"position": "UI/UX & Frontend Dev",
+					"bio": "With 3 years experience in UI/UX design, I have gained considerable expertise in web and app design. I am proud to be the founding member of GeekOn and I am delighted to offer our professional services in this area."
+				},
+				"shukhrat-rustamov": {
+					"name": "Shukhrat Rustamov",
+					"position": "Full-stack Dev",
+					"bio": "With four years of web development expertise, I'm the proud founder of GeekOn, committed to delivering high-quality work with energy and creativity."
+				},
+				"sabina-izmailova": {
+					"name": "Sabina Izmailova",
+					"position": "SMM Manager",
+					"bio": "For more than 3 years I have been working in marketing and promotion strategies in Social Media. I create branded and authentic content. All your impossible ideas will be realized by the GeekOn team!"
+				},
+				"saveliy-kurov": {
+					"name": "Saveliy Kurov",
+					"position": "Project Manager",
+					"bio": "Our knowledge and approach to business will help achieve the main goal of our team - to breathe new life into the business industry and help developing projects reach professional heights. I vouch for it!"
+				},
+				"samat-yakupov": {
+					"name": "Samat Yakupov",
+					"position": "Backend Dev",
+					"bio": "I am a web application architect and a member of the GeekOn project. When choosing us, be sure that we will turn your ambitious ideas into reality."
+				},
+				"iskander-bajrashev": {
+					"name": "Iskander Bajrashev",
+					"position": "3D Designer",
+					"bio": "In the world of 3D, we not only create images, we embody ideas in depth and volume. Together with us, your vision acquires the third dimension, and your project becomes alive and unique."
+				}
+			}
+		},
+		"reviewsSection": {
+			"title": "Reviews",
+			"text": "Read the testimonials of our satisfied customers:"
+		},
+		"contactUsSection": {
+			"title": "Contact Us",
+			"text": "Contact us: let's discuss your needs in the digital world!",
+			"form": {
+				"title": "Let's get to work right now",
+				"note": "Our project manager <b>Savely Kurov</b> will answer you",
+				"fields": {
+					"name": "Your name",
+					"phone": "Your phone number",
+					"email": "Your email or telegram username"
+				},
+				"submit": "Discuss project",
+				"pp": "By clicking on the button, you agree to the processing of personal data"
+			}
 		}
 	}
 }
